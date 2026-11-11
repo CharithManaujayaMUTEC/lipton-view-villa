@@ -79,7 +79,7 @@ export default function Bookings() {
                 <td className="font-mono text-xs">{b.ref}</td>
                 <td><p className="font-semibold">{b.guestName}</p><p className="text-xs text-muted">{b.email}</p></td>
                 <td>{roomName(b.roomId)}</td>
-                <td>{fmtDate(b.checkIn, { day: "numeric", month: "short" })} → {fmtDate(b.checkOut, { day: "numeric", month: "short" })} <span className="text-xs text-muted">({nightsBetween(b.checkIn, b.checkOut)}n)</span></td>
+                <td>{fmtDate(b.checkIn, { day: "numeric", month: "short" })} to {fmtDate(b.checkOut, { day: "numeric", month: "short" })} <span className="text-xs text-muted">({nightsBetween(b.checkIn, b.checkOut)}n)</span></td>
                 <td className="capitalize">{b.source}</td>
                 <td><StatusBadge status={b.status} /></td>
                 <td><StatusBadge status={b.payment} /></td>

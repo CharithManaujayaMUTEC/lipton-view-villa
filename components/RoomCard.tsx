@@ -35,7 +35,7 @@ export function RoomCard({ room, query = "", total, nights }: { room: Room; quer
           <Rating value={room.rating / 2} />
         </div>
         <p className="mt-1 flex items-center gap-1 text-xs text-muted">
-          <MapPin size={12} /> {data.settings.location} · up to {room.maxGuests} guests
+          <MapPin size={12} /> {data.settings.location} - up to {room.maxGuests} guests
         </p>
         <p className="mt-3 text-lg font-extrabold text-brand-800">
           {money(room.pricePerNight)} <span className="text-xs font-medium text-muted">/ night</span>

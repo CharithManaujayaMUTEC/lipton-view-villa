@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @theme inline {
   --color-brand-50: #f1f9f5;
@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  background: #fff;
+  background: #e9f5ef;
   color: var(--color-ink);
   font-family: var(--font-jakarta), system-ui, sans-serif;
 }

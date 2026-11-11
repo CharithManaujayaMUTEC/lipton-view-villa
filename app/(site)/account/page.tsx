@@ -25,7 +25,7 @@ export default function Account() {
             <div key={b.id} className="card flex flex-wrap items-center justify-between gap-4 p-5">
               <div>
                 <p className="font-bold">{room?.name ?? "Room"} <span className="ml-2 text-xs font-normal text-muted">{b.ref}</span></p>
-                <p className="text-sm text-muted">{fmtDate(b.checkIn)} → {fmtDate(b.checkOut)} · {b.guests} guests</p>
+                <p className="text-sm text-muted">{fmtDate(b.checkIn)} to {fmtDate(b.checkOut)} - {b.guests} guests</p>
               </div>
               <div className="flex items-center gap-3">
                 <StatusBadge status={b.status} />

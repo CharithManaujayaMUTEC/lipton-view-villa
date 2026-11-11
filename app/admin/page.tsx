@@ -77,7 +77,7 @@ export default function Dashboard() {
           <ul className="mt-3 divide-y divide-black/5">
             {upcoming.map((b) => (
               <li key={b.id} className="flex items-center justify-between py-3 text-sm">
-                <div><p className="font-semibold">{b.guestName}</p><p className="text-xs text-muted">{roomName(b.roomId)} · {nightsBetween(b.checkIn, b.checkOut)}n</p></div>
+                <div><p className="font-semibold">{b.guestName}</p><p className="text-xs text-muted">{roomName(b.roomId)} - {nightsBetween(b.checkIn, b.checkOut)}n</p></div>
                 <div className="text-right"><p className="font-semibold">{fmtShort(b.checkIn)}</p><StatusBadge status={b.status} /></div>
               </li>
             ))}
@@ -89,7 +89,7 @@ export default function Dashboard() {
       <div className="card mt-6 overflow-x-auto p-5">
         <div className="mb-3 flex items-center justify-between">
           <h3 className="font-bold">Recent bookings</h3>
-          <Link href="/admin/bookings" className="text-sm font-semibold text-brand-700">Manage all →</Link>
+          <Link href="/admin/bookings" className="text-sm font-semibold text-brand-700">Manage all</Link>
         </div>
         <table className="w-full min-w-[560px] text-left text-sm">
           <thead className="text-xs text-muted"><tr><th className="pb-2">Ref</th><th>Guest</th><th>Room</th><th>Dates</th><th>Status</th><th className="text-right">Total</th></tr></thead>

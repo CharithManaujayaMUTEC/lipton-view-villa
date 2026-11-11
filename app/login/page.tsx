@@ -42,9 +42,9 @@ export default function Login() {
               </button>
             ))}
           </div>
-          <p className="mt-3 text-xs text-muted">Or type: {DEMO_USERS.map((u) => `${u.email} / ${u.password}`).join(" · ")}</p>
+          <p className="mt-3 text-xs text-muted">Or type: {DEMO_USERS.map((u) => `${u.email} / ${u.password}`).join(" - ")}</p>
         </div>
-        <p className="mt-4 text-center text-sm"><Link href="/" className="text-brand-700 font-semibold">← Back to website</Link></p>
+        <p className="mt-4 text-center text-sm"><Link href="/" className="text-brand-700 font-semibold">Back to website</Link></p>
       </div>
     </div>
   );

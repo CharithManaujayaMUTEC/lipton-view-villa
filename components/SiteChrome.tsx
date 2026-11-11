@@ -106,7 +106,7 @@ export function Footer() {
   const { data } = useStore();
   const s = data.settings;
   return (
-    <footer className="mt-12 bg-brand-50">
+    <footer className="mt-12 bg-brand-200/70">
       <div className="container-x grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo />
@@ -125,7 +125,7 @@ export function Footer() {
       </div>
       <div className="border-t border-black/5">
         <div className="container-x flex flex-wrap items-center justify-between gap-3 py-5 text-xs text-muted">
-          <span>© {new Date().getFullYear()} {s.siteName}. Demo website - content is sample data.</span>
+          <span>(c) {new Date().getFullYear()} {s.siteName}. Demo website - content is sample data.</span>
           <a href="#top" className="grid h-9 w-9 place-items-center rounded-full bg-brand-700 text-white" aria-label="Back to top">
             <ArrowUp size={16} />
           </a>

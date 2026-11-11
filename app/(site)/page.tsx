@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -116,7 +116,7 @@ export default function Home() {
       <section className="container-x mt-10">
         <div className="mb-5 flex items-end justify-between">
           <h2 className="h-section">Featured Stays</h2>
-          <Link href="/rooms" className="text-sm font-semibold text-brand-700">View all â†’</Link>
+          <Link href="/rooms" className="text-sm font-semibold text-brand-700">View all</Link>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((r) => <RoomCard key={r.id} room={r} />)}
@@ -130,7 +130,7 @@ export default function Home() {
             <h2 className="h-section">The Villa & Its Surroundings</h2>
             <p className="mt-1 text-sm text-muted">Tea terraces, misty ridges and golden evenings, right outside your door.</p>
           </div>
-          <Link href="/gallery" className="text-sm font-semibold text-brand-700">Full gallery →</Link>
+          <Link href="/gallery" className="text-sm font-semibold text-brand-700">Full gallery</Link>
         </div>
         <div className="grid grid-cols-2 gap-1.5 px-1.5 md:h-[560px] md:grid-cols-4 md:grid-rows-2">
           {mosaic.map((m, k) => (
@@ -181,7 +181,7 @@ export default function Home() {
             <div className="p-6 sm:p-0">
               <h3 className="text-xl font-extrabold text-brand-900">{offer.title}</h3>
               <p className="mt-1 text-sm text-muted">{offer.description}</p>
-              <p className="mt-1 text-xs text-muted">Use code <b className="text-brand-800">{offer.code}</b> Â· valid until {fmtDate(offer.validUntil)}</p>
+              <p className="mt-1 text-xs text-muted">Use code <b className="text-brand-800">{offer.code}</b> - valid until {fmtDate(offer.validUntil)}</p>
               <Link href="/rooms" className="btn-primary mt-4">Book Now</Link>
             </div>
             <div className="m-6 flex items-center gap-3 rounded-2xl bg-white p-5 shadow sm:m-6">
@@ -226,8 +226,8 @@ export default function Home() {
                 <span className="badge bg-brand-700 text-white">{r.rating}.0</span>
                 <span className="text-xs text-muted">{fmtDate(r.date)}</span>
               </div>
-              <blockquote className="mt-3 text-sm leading-relaxed">â€œ{r.text}â€</blockquote>
-              <figcaption className="mt-3 text-xs font-bold">{r.name} <span className="font-normal text-muted">Â· {r.country}</span></figcaption>
+              <blockquote className="mt-3 text-sm leading-relaxed">&quot;{r.text}&quot;</blockquote>
+              <figcaption className="mt-3 text-xs font-bold">{r.name} <span className="font-normal text-muted">- {r.country}</span></figcaption>
             </figure>
           ))}
         </div>

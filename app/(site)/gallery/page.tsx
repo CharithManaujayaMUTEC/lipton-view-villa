@@ -1,5 +1,6 @@
 "use client";
 
+import { PageBanner } from "@/components/PageBanner";
 import { useState } from "react";
 import { Play, X } from "lucide-react";
 import { useStore } from "@/lib/store";
@@ -16,10 +17,10 @@ export default function Gallery() {
   const items = data.media.filter((m) => cat === "All" || m.category === cat);
 
   return (
-    <div className="container-x py-10">
-      <h1 className="h-section">Portfolio & Gallery</h1>
-      <p className="mt-1 text-sm text-muted">A look at the villa, the views and life on the estate.</p>
-      <div className="mt-6 flex flex-wrap gap-2">
+    <>
+    <PageBanner title="Portfolio & Gallery" index={5} />
+    <div className="container-x py-6">
+      <div className="flex flex-wrap gap-2">
         {cats.map((c) => (
           <button key={c} onClick={() => setCat(c)} className={cn("rounded-full px-4 py-1.5 text-sm font-semibold transition", cat === c ? "bg-brand-700 text-white" : "bg-brand-50 text-brand-800 hover:bg-brand-100")}>{c}</button>
         ))}
@@ -45,5 +46,6 @@ export default function Gallery() {
         </div>
       )}
     </div>
+    </>
   );
 }

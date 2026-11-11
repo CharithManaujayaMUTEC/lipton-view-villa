@@ -1,5 +1,6 @@
 "use client";
 
+import { PageBanner } from "@/components/PageBanner";
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useStore } from "@/lib/store";
@@ -18,11 +19,11 @@ function Rooms() {
   const rooms = data.rooms.filter((r) => r.active && (!guests || r.maxGuests >= guests));
 
   return (
-    <div className="container-x py-10">
-      <h1 className="h-section">Rooms & Suites</h1>
-      <p className="mt-1 text-sm text-muted">Choose your dates to see live availability and total prices.</p>
+    <>
+    <PageBanner title="Rooms & Suites" index={2} />
+    <div className="container-x py-6">
 
-      <div className="card mt-6 grid gap-3 p-4 sm:grid-cols-4">
+      <div className="card -mt-12 relative grid gap-3 p-4 sm:grid-cols-4">
         <label><span className="label">Check-in</span>
           <input type="date" className="input" min={todayISO()} value={checkIn} onChange={(e) => { setCheckIn(e.target.value); if (e.target.value >= checkOut) setCheckOut(addDays(e.target.value, 1)); }} /></label>
         <label><span className="label">Check-out</span>
@@ -51,6 +52,7 @@ function Rooms() {
         {rooms.length === 0 && <p className="text-sm text-muted">No rooms match your search.</p>}
       </div>
     </div>
+    </>
   );
 }
 

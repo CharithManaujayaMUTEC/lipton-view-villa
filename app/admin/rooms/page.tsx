@@ -27,7 +27,7 @@ export default function Rooms() {
             <Img src={r.images[0]} alt={r.name} className="aspect-[16/9] w-full object-cover" />
             <div className="p-4">
               <div className="flex items-start justify-between gap-2">
-                <div><h3 className="font-bold">{r.name}</h3><p className="text-xs text-muted">{r.type} · {r.units} unit{r.units > 1 ? "s" : ""} · {r.maxGuests} guests</p></div>
+                <div><h3 className="font-bold">{r.name}</h3><p className="text-xs text-muted">{r.type} - {r.units} unit{r.units > 1 ? "s" : ""} - {r.maxGuests} guests</p></div>
                 <span className={`badge ${r.active ? "bg-brand-100 text-brand-800" : "bg-gray-100 text-gray-600"}`}>{r.active ? "Active" : "Hidden"}</span>
               </div>
               <div className="mt-3 flex items-center justify-between">
@@ -51,7 +51,7 @@ export default function Rooms() {
             <Field label="Units available"><input type="number" min={1} className="input" value={edit.units} onChange={(e) => set("units", +e.target.value)} /></Field>
             <Field label="Max guests"><input type="number" min={1} className="input" value={edit.maxGuests} onChange={(e) => set("maxGuests", +e.target.value)} /></Field>
             <Field label="Beds"><input className="input" value={edit.beds} onChange={(e) => set("beds", e.target.value)} /></Field>
-            <Field label="Size (m²)"><input type="number" className="input" value={edit.size} onChange={(e) => set("size", +e.target.value)} /></Field>
+            <Field label="Size (sq m)"><input type="number" className="input" value={edit.size} onChange={(e) => set("size", +e.target.value)} /></Field>
             <Field label="Badge (e.g. Popular)"><input className="input" value={edit.badge} onChange={(e) => set("badge", e.target.value)} /></Field>
             <div className="sm:col-span-2"><Field label="Description"><textarea rows={3} className="input" value={edit.description} onChange={(e) => set("description", e.target.value)} /></Field></div>
             <div className="sm:col-span-2"><Field label="Amenities (comma separated)"><input className="input" value={edit.amenities.join(", ")} onChange={(e) => set("amenities", e.target.value.split(",").map((s) => s.trim()).filter(Boolean))} /></Field></div>

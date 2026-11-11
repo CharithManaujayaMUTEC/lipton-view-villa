@@ -43,7 +43,7 @@ export function HeroSlider() {
       <div className="container-x absolute inset-x-0 top-1/2 -translate-y-[62%]">
         <div key={slides[idx].id} className="max-w-3xl text-white">
           <span className="rise-1 inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-semibold backdrop-blur">
-            <MapPin size={14} /> {data.settings.siteName} · {data.settings.location}
+            <MapPin size={14} /> {data.settings.siteName} - {data.settings.location}
           </span>
           <h1 className="mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight drop-shadow-lg sm:text-6xl lg:text-7xl">
             <span className="rise-2 block">{slides[idx].line1}</span>

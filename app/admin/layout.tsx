@@ -77,7 +77,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="lg:pl-64">
         <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b border-black/5 bg-white/90 px-4 backdrop-blur sm:px-8">
           <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</button>
-          <span className="hidden text-sm text-muted lg:block">Admin panel · demo data saved in this browser</span>
+          <span className="hidden text-sm text-muted lg:block">Admin panel - demo data saved in this browser</span>
           <div className="flex items-center gap-3 text-sm">
             <span className="text-right leading-tight"><b className="block">{session.name}</b><span className="text-xs capitalize text-muted">{session.role}</span></span>
             <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-700 font-bold text-white">{session.name[0]}</span>

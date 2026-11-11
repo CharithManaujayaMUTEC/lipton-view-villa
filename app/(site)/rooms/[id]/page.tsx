@@ -35,7 +35,7 @@ function Detail() {
 
   return (
     <div className="container-x py-8">
-      <Link href="/rooms" className="text-sm font-semibold text-brand-700">← All rooms</Link>
+      <Link href="/rooms" className="text-sm font-semibold text-brand-700">All rooms</Link>
       <div className="mt-4 grid gap-8 lg:grid-cols-[1fr_380px]">
         <div>
           <Img src={room.images[img]} alt={room.name} className="aspect-[16/10] w-full rounded-2xl object-cover" />
@@ -57,7 +57,7 @@ function Detail() {
           <div className="mt-4 flex flex-wrap gap-5 text-sm text-muted">
             <span className="flex items-center gap-1.5"><Users size={16} /> Up to {room.maxGuests} guests</span>
             <span className="flex items-center gap-1.5"><BedDouble size={16} /> {room.beds}</span>
-            <span className="flex items-center gap-1.5"><Maximize size={16} /> {room.size} m²</span>
+            <span className="flex items-center gap-1.5"><Maximize size={16} /> {room.size} sq m</span>
           </div>
           <p className="mt-5 leading-relaxed text-ink/80">{room.description}</p>
           <h3 className="mt-6 font-bold">Amenities</h3>
@@ -83,7 +83,7 @@ function Detail() {
 
           {q && (
             <dl className="mt-4 space-y-1.5 border-t border-black/5 pt-4 text-sm">
-              <Row l={`${money(room.pricePerNight)} × ${q.nights} night${q.nights > 1 ? "s" : ""}`} v={money(q.subtotal)} />
+              <Row l={`${money(room.pricePerNight)} x ${q.nights} night${q.nights > 1 ? "s" : ""}`} v={money(q.subtotal)} />
               {q.offer && <Row l={`${q.offer.title} (-${q.offer.discount}%)`} v={"-" + money(q.discount)} green />}
               <Row l={`Taxes & fees (${data.settings.taxPercent}%)`} v={money(q.tax)} />
               <Row l="Total" v={money(q.total)} bold />

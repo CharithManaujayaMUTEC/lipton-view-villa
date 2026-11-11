@@ -66,7 +66,7 @@ function Checkout() {
             <label className="block"><span className="label">Phone</span><input required className="input" value={phone} onChange={(e) => setPhone(e.target.value)} /></label>
           </div>
           <label className="block"><span className="label">Special requests</span><textarea rows={3} className="input" value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Arrival time, meals, transfers..." /></label>
-          <button className="btn-primary w-full">Request booking · {money(q.total)}</button>
+          <button className="btn-primary w-full">Request booking - {money(q.total)}</button>
           <p className="text-center text-xs text-muted">Pay at the villa. Free cancellation up to 48 hours before arrival.</p>
         </form>
 
@@ -74,7 +74,7 @@ function Checkout() {
           <Img src={room.images[0]} alt={room.name} className="aspect-[16/9] w-full object-cover" />
           <div className="space-y-2 p-5 text-sm">
             <h3 className="text-lg font-bold">{room.name}</h3>
-            <p className="text-muted">{fmtDate(checkIn)} → {fmtDate(checkOut)} · {q.nights} night{q.nights > 1 ? "s" : ""} · {guests} guest{guests > 1 ? "s" : ""}</p>
+            <p className="text-muted">{fmtDate(checkIn)} to {fmtDate(checkOut)} - {q.nights} night{q.nights > 1 ? "s" : ""} - {guests} guest{guests > 1 ? "s" : ""}</p>
             <div className="flex justify-between border-t border-black/5 pt-2"><span>Room</span><span>{money(q.subtotal)}</span></div>
             {q.offer && <div className="flex justify-between text-brand-700"><span>{q.offer.code}</span><span>-{money(q.discount)}</span></div>}
             <div className="flex justify-between"><span>Taxes & fees</span><span>{money(q.tax)}</span></div>

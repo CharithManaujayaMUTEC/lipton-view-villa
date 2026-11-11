@@ -15,7 +15,7 @@ export default function Messages() {
         {list.map((m) => (
           <div key={m.id} className={cn("card p-5", !m.read && "border-brand-400 bg-brand-50")}>
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="text-sm font-bold">{m.subject} <span className="font-normal text-muted">· {m.name} &lt;{m.email}&gt; · {fmtDate(m.date)}</span></p>
+              <p className="text-sm font-bold">{m.subject} <span className="font-normal text-muted">- {m.name} &lt;{m.email}&gt; - {fmtDate(m.date)}</span></p>
               <div className="flex items-center gap-3 text-sm">
                 <a className="font-semibold text-brand-700" href={`mailto:${m.email}?subject=Re: ${m.subject}`}>Reply</a>
                 <button className="font-semibold text-brand-700" onClick={() => upsert("messages", { ...m, read: !m.read })}>{m.read ? "Mark unread" : "Mark read"}</button>

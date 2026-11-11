@@ -14,7 +14,7 @@ export default function Reviews() {
         {data.reviews.map((r) => (
           <div key={r.id} className="card flex flex-wrap items-start justify-between gap-4 p-5">
             <div className="max-w-2xl">
-              <p className="text-sm font-bold">{r.name} <span className="font-normal text-muted">· {r.country} · {fmtDate(r.date)}</span> <span className="badge ml-2 bg-brand-700 text-white">{r.rating}/10</span></p>
+              <p className="text-sm font-bold">{r.name} <span className="font-normal text-muted">- {r.country} - {fmtDate(r.date)}</span> <span className="badge ml-2 bg-brand-700 text-white">{r.rating}/10</span></p>
               <p className="mt-2 text-sm">{r.text}</p>
             </div>
             <div className="flex items-center gap-3">

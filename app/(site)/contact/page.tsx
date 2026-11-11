@@ -1,5 +1,6 @@
 "use client";
 
+import { PageBanner } from "@/components/PageBanner";
 import { useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useStore } from "@/lib/store";
@@ -11,9 +12,10 @@ export default function Contact() {
   const [f, setF] = useState({ name: "", email: "", subject: "", body: "" });
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setF({ ...f, [k]: e.target.value });
   return (
-    <div className="container-x py-10">
-      <h1 className="h-section">Contact us</h1>
-      <div className="mt-6 grid gap-8 md:grid-cols-[1fr_1.2fr]">
+    <>
+    <PageBanner title="Contact us" index={3} />
+    <div className="container-x py-6">
+      <div className="grid gap-8 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">
           {[{ i: Phone, t: s.phone }, { i: Mail, t: s.email }, { i: MapPin, t: s.address }].map((x) => (
             <div key={x.t} className="card flex items-center gap-4 p-4">
@@ -21,7 +23,7 @@ export default function Contact() {
               <span className="text-sm font-medium">{x.t}</span>
             </div>
           ))}
-          <p className="text-sm text-muted">Check-in from {s.checkInTime} · Check-out by {s.checkOutTime}</p>
+          <p className="text-sm text-muted">Check-in from {s.checkInTime} - Check-out by {s.checkOutTime}</p>
         </div>
         <form
           className="card space-y-4 p-6"
@@ -42,5 +44,6 @@ export default function Contact() {
         </form>
       </div>
     </div>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { PageBanner } from "@/components/PageBanner";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { fmtDate, todayISO } from "@/lib/utils";
@@ -9,9 +10,10 @@ export default function Offers() {
   const { data, toast } = useStore();
   const offers = data.offers.filter((o) => o.active && o.validUntil >= todayISO());
   return (
-    <div className="container-x py-10">
-      <h1 className="h-section">Special Offers</h1>
-      <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <>
+    <PageBanner title="Special Offers" index={7} />
+    <div className="container-x py-6">
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {offers.map((o) => (
           <div key={o.id} className="card overflow-hidden">
             <div className="relative">
@@ -32,5 +34,6 @@ export default function Offers() {
         {offers.length === 0 && <p className="text-sm text-muted">No active offers right now.</p>}
       </div>
     </div>
+    </>
   );
 }

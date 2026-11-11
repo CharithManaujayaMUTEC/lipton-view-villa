@@ -11,14 +11,13 @@ export function HeroSlider() {
   const { data } = useStore();
   const slides = data.settings.heroSlides.filter((s) => s.url);
   const [i, setI] = useState(0);
-  const [paused, setPaused] = useState(false);
   const n = slides.length;
 
   useEffect(() => {
-    if (paused || n < 2) return;
+    if (n < 2) return;
     const t = setTimeout(() => setI((x) => (x + 1) % n), INTERVAL);
     return () => clearTimeout(t);
-  }, [i, paused, n]);
+  }, [i, n]);
 
   if (!n) return null;
   const idx = i % n;
@@ -26,8 +25,6 @@ export function HeroSlider() {
   return (
     <section
       className="relative h-[78vh] min-h-[480px] w-full overflow-hidden bg-brand-900"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       {slides.map((s, k) => (
         <div key={s.id} className={cn("absolute inset-0 transition-opacity duration-[1400ms]", k === idx ? "opacity-100" : "opacity-0")}>
@@ -64,7 +61,7 @@ export function HeroSlider() {
           <div className="container-x absolute inset-x-0 bottom-32 flex gap-2 lg:bottom-36">
             {slides.map((s, k) => (
               <button key={s.id} aria-label={`Slide ${k + 1}`} onClick={() => setI(k)} className="h-1 w-12 overflow-hidden rounded bg-white/30 sm:w-16">
-                {k === idx && <span key={i + String(paused)} className={cn("block h-full w-full bg-white", !paused && "progress")} />}
+                {k === idx && <span key={i} className="progress block h-full w-full bg-white" />}
               </button>
             ))}
           </div>

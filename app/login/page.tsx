@@ -33,18 +33,16 @@ export default function Login() {
         </form>
 
         <div className="card mt-4 p-5">
-          <p className="text-xs font-bold uppercase tracking-wide text-muted">Demo accounts - click to sign in</p>
-          <div className="mt-3 space-y-2">
+          <p className="text-xs font-bold uppercase tracking-wide text-muted">Demo login - one click</p>
+          <div className="mt-3 grid grid-cols-3 gap-3">
             {DEMO_USERS.map((u) => (
-              <button key={u.email} onClick={() => go(u.email, u.password)} className="flex w-full items-center justify-between rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-left transition hover:bg-brand-100">
-                <span>
-                  <span className="block text-sm font-bold capitalize">{u.role}</span>
-                  <span className="block text-xs text-muted">{u.email} / {u.password}</span>
-                </span>
-                <span className="text-xs font-semibold text-brand-700">Use →</span>
+              <button key={u.email} onClick={() => go(u.email, u.password)} className="btn-primary flex-col !gap-0.5 !py-3 capitalize">
+                <span>{u.role}</span>
+                <span className="text-[10px] font-normal normal-case opacity-80">{u.role === "guest" ? "My trips" : u.role === "admin" ? "Full access" : "Bookings"}</span>
               </button>
             ))}
           </div>
+          <p className="mt-3 text-xs text-muted">Or type: {DEMO_USERS.map((u) => `${u.email} / ${u.password}`).join(" · ")}</p>
         </div>
         <p className="mt-4 text-center text-sm"><Link href="/" className="text-brand-700 font-semibold">← Back to website</Link></p>
       </div>

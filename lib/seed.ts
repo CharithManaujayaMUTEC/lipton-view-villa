@@ -69,6 +69,12 @@ export function seed(): Data {
 
   return {
     settings: {
+      heroSlides: [
+        { id: "h1", type: "image", url: U(P.villa, 2000), line1: "Wake Up Above", line2: "the Clouds" },
+        { id: "h2", type: "image", url: U(P.mist, 2000), line1: "Mist, Tea & Silence", line2: "Your Hill-Country Escape" },
+        { id: "h3", type: "image", url: U(P.sunrise, 2000), line1: "Sunrise at", line2: "Lipton's Seat" },
+        { id: "h4", type: "image", url: U(P.pool, 2000), line1: "Slow Evenings", line2: "On Your Private Terrace" },
+      ],
       siteName: "Lipton View Villa",
       tagline: "Mountain villa stay",
       heroTitle: "Wake Up Above",

@@ -78,7 +78,16 @@ export type Message = {
   read: boolean;
 };
 
+export type HeroSlide = {
+  id: string;
+  type: "image" | "video";
+  url: string;
+  line1: string;
+  line2: string;
+};
+
 export type Settings = {
+  heroSlides: HeroSlide[];
   siteName: string;
   tagline: string;
   heroTitle: string;

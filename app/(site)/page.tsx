@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
-  Building2, Coffee, Headphones, Mountain, MapPin, Play, Search, Smile, Sparkles, Star, Tag, Users, Waves, Wifi, Utensils, Flame,
+  Building2, Coffee, Headphones, Mountain, Play, Search, Smile, Sparkles, Star, Tag, Users, Waves, Wifi, Utensils, Flame,
 } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { addDays, fmtDate, todayISO } from "@/lib/utils";
@@ -12,6 +12,7 @@ import { Img, Modal } from "@/components/ui";
 import { RoomCard } from "@/components/RoomCard";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { U } from "@/lib/seed";
+import { HeroSlider } from "@/components/HeroSlider";
 
 const AMENITIES = [
   { icon: Wifi, label: "Free Wi-Fi" },
@@ -45,6 +46,7 @@ export default function Home() {
 
   const featured = data.rooms.filter((r) => r.featured && r.active).slice(0, 3);
   const offer = data.offers.find((o) => o.active);
+  const mosaic = [...data.media.filter((m) => m.type === "image" && m.featured), ...data.media.filter((m) => m.type === "image" && !m.featured)].slice(0, 6);
   const thumbs = data.media.filter((m) => m.type === "image").slice(0, 4);
   const reviews = data.reviews.filter((r) => r.published);
 
@@ -54,32 +56,10 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="container-x pt-6">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-100 via-brand-50 to-white">
-          <div className="grid items-center md:grid-cols-2">
-            <div className="relative z-10 p-8 sm:p-12 md:p-14">
-              <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-brand-900 sm:text-5xl">
-                {s.heroTitle}
-                <br />
-                <span className="text-brand-600">{s.heroHighlight}</span>
-              </h1>
-              <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted sm:text-base">{s.heroText}</p>
-              <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold shadow">
-                <span className="grid h-7 w-7 place-items-center rounded-full bg-brand-100 text-brand-700">
-                  <MapPin size={15} />
-                </span>
-                {s.siteName}, {s.location.split(",")[0]}
-              </span>
-            </div>
-            <div className="relative h-64 md:h-[420px]">
-              <Img src={s.heroImage} alt={s.siteName} className="h-full w-full object-cover" />
-              <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/2 bg-gradient-to-r from-brand-50 to-transparent md:block" />
-            </div>
-          </div>
-        </div>
-
+      <HeroSlider />
+      <section className="container-x">
         {/* SEARCH PANEL */}
-        <div className="card relative z-10 -mt-12 grid gap-6 p-5 sm:mx-6 sm:p-6 lg:grid-cols-[1.1fr_1.3fr_1fr]">
+        <div className="card relative z-10 -mt-24 grid gap-6 p-5 sm:mx-6 sm:p-6 lg:grid-cols-[1.1fr_1.3fr_1fr]">
           <div>
             <h3 className="text-sm font-bold">Amenities</h3>
             <div className="mt-3 flex gap-3">
@@ -133,7 +113,7 @@ export default function Home() {
       </section>
 
       {/* FEATURED */}
-      <section className="container-x mt-16">
+      <section className="container-x mt-10">
         <div className="mb-5 flex items-end justify-between">
           <h2 className="h-section">Featured Stays</h2>
           <Link href="/rooms" className="text-sm font-semibold text-brand-700">View all â†’</Link>
@@ -143,8 +123,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SURROUNDINGS */}
+      <section className="mt-10">
+        <div className="container-x mb-4 flex items-end justify-between">
+          <div>
+            <h2 className="h-section">The Villa & Its Surroundings</h2>
+            <p className="mt-1 text-sm text-muted">Tea terraces, misty ridges and golden evenings, right outside your door.</p>
+          </div>
+          <Link href="/gallery" className="text-sm font-semibold text-brand-700">Full gallery →</Link>
+        </div>
+        <div className="grid grid-cols-2 gap-1.5 px-1.5 md:h-[560px] md:grid-cols-4 md:grid-rows-2">
+          {mosaic.map((m, k) => (
+            <Link href="/gallery" key={m.id} className={`group relative block overflow-hidden rounded-xl ${k === 0 ? "col-span-2 row-span-2 aspect-square md:aspect-auto" : k === 3 ? "md:col-span-2 aspect-[4/3] md:aspect-auto" : "aspect-[4/3] md:aspect-auto"}`}>
+              <Img src={m.url} alt={m.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-sm font-semibold text-white">{m.title}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* EXPERIENCES */}
-      <section className="container-x mt-16 grid gap-8 lg:grid-cols-[320px_1fr]">
+      <section className="container-x mt-10 grid gap-8 lg:grid-cols-[320px_1fr]">
         <div>
           <h2 className="h-section">Villa Experiences</h2>
           <ul className="mt-5 space-y-3">
@@ -176,7 +175,7 @@ export default function Home() {
 
       {/* OFFER */}
       {offer && (
-        <section className="container-x mt-16">
+        <section className="container-x mt-10">
           <div className="grid items-center gap-4 overflow-hidden rounded-3xl bg-brand-100 sm:grid-cols-[220px_1fr_auto]">
             <Img src={offer.image} alt={offer.title} className="h-44 w-full object-cover sm:h-full" />
             <div className="p-6 sm:p-0">
@@ -198,7 +197,7 @@ export default function Home() {
       )}
 
       {/* TRUST */}
-      <section className="container-x mt-12">
+      <section className="container-x mt-8">
         <div className="card grid grid-cols-2 gap-6 p-6 lg:grid-cols-4">
           {[
             { i: Smile, v: s.statGuests, l: "Happy Guests" },
@@ -218,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* REVIEWS */}
-      <section className="container-x mt-16">
+      <section className="container-x mt-10">
         <h2 className="h-section mb-5">What guests say</h2>
         <div className="grid gap-5 md:grid-cols-3">
           {reviews.slice(0, 3).map((r) => (
@@ -244,7 +243,7 @@ function Newsletter() {
   const { toast } = useStore();
   const [email, setEmail] = useState("");
   return (
-    <section className="container-x mt-16">
+    <section className="container-x mt-10">
       <form
         onSubmit={(e) => { e.preventDefault(); toast("Thanks for subscribing!"); setEmail(""); }}
         className="flex flex-col items-start gap-4 rounded-2xl bg-brand-800 p-6 text-white sm:flex-row sm:items-center sm:justify-between"

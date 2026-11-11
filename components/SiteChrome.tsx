@@ -106,7 +106,7 @@ export function Footer() {
   const { data } = useStore();
   const s = data.settings;
   return (
-    <footer className="mt-20 bg-brand-50">
+    <footer className="mt-12 bg-brand-50">
       <div className="container-x grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo />

@@ -66,7 +66,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       const rs = localStorage.getItem(SKEY);
       if (rs) s = JSON.parse(rs);
     } catch {}
-    setData(d ?? seed());
+    const base = seed();
+    setData(d ? { ...d, settings: { ...base.settings, ...d.settings } } : base);
     setSession(s);
   }, []);
 

@@ -60,3 +60,21 @@ body {
   @apply text-2xl font-bold tracking-tight text-brand-900 sm:text-3xl;
 }
 
+
+@keyframes kenburns {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.14); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.kenburns { animation: kenburns 9s ease-out forwards; }
+.rise-1 { animation: rise 1s cubic-bezier(.2,.7,.2,1) .25s both; }
+.rise-2 { animation: rise 1s cubic-bezier(.2,.7,.2,1) .6s both; }
+.rise-3 { animation: rise 1s cubic-bezier(.2,.7,.2,1) .95s both; }
+.progress { transform-origin: left; animation: grow 6s linear forwards; }
